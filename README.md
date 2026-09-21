@@ -91,10 +91,6 @@ RCAC-TSFMs/
 ├── results/
 │   └── v6_onesided_kupiec.csv  # 99-row authoritative per-cell table (shipped;
 │                               # every compliance count in the paper derives from it)
-├── docs/
-│   ├── paper_manuscript.docx
-│   ├── contamination_audit.md  # pretraining-cutoff audit checklist + author email template
-│   └── responses/              # full response-to-reviewers history (R2-R5)
 ├── data/                       # (empty; scripts fetch via akshare and cache here)
 └── results/                    # (populated by run_all.py)
 ```
