@@ -8,8 +8,6 @@ Official code and data for the paper:
 
 > **Calibrating Time-Series Foundation Models for Financial Risk:
 > A Risk-Compliant Study of Post-hoc Conformal Calibration**
-> (submitted to IEEE TKDE; anonymous submission, see `docs/paper_manuscript.docx`)
-
 ---
 
 ## TL;DR
@@ -165,7 +163,7 @@ RCAC-TSFMs/
   author  = {Anonymous},
   journal = {submitted to IEEE TKDE},
   year    = {2026},
-  note    = {Code: https://github.com/<anon-repo>/RCAC-TSFMs}
+  note    = {Code: https://github.com/hanxiaole666/RCAC-TSFMs}
 }
 ```
 
