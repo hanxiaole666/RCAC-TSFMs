@@ -61,6 +61,8 @@ STAGES = [
     (15, "15_spx_extension.py",           ["v6_spx.csv"]),
     (16, "16_counterexample.py",          []),
     (17, "17_metric_comparison.py",       ["v6_metric_comparison.csv"]),
+    (18, "18_spx_full.py",                ["v6_spx_full.csv"]),
+#S&P 500: Comparison of All 11 Methods
 ]
 
 def main():
