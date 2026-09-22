@@ -35,8 +35,8 @@ import os, sys, subprocess, time, argparse
 
 HERE  = os.path.dirname(os.path.abspath(__file__))
 REPRO = os.path.join(HERE, "reproduction")
-# 产物可能在仓库 results/ 或脚本默认的 D:\\RCAC-TSFMs\\results (各脚本的 PROJECT_ROOT)
-RESULTS_CANDIDATES = [os.path.join(HERE, "results"), r"D:\RCAC-TSFMs\results"]
+# 产物可能在仓库 results/ 或脚本默认的 D:\\finrisk_project\\results (各脚本的 PROJECT_ROOT)
+RESULTS_CANDIDATES = [os.path.join(HERE, "results"), r"D:\finrisk_project\results"]
 
 def markers_exist(markers):
     return any(all(os.path.exists(os.path.join(rd, m)) for m in markers)
@@ -58,8 +58,9 @@ STAGES = [
     (12, "12_path_sens_256.py",           ["v6_pathsens_256.csv"]),
     (13, "13_make_figures.py",            ["fig1_framework.png", "fig4_cases.png"]),
     (14, "14_make_table5.py",             []),
-    (15, "15_spx_extension.py", ["v6_spx.csv"]),
-    (16, "16_counterexample.py", []),
+    (15, "15_spx_extension.py",           ["v6_spx.csv"]),
+    (16, "16_counterexample.py",          []),
+    (17, "17_metric_comparison.py",       ["v6_metric_comparison.csv"]),
 ]
 
 def main():

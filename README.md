@@ -91,6 +91,7 @@ RCAC-TSFMs/
 │   └── 14_make_table5.py       # per-asset RCAC aggregation helper
 │   └── 15_spx_extension.py     # Cross-market validation: S&P 500 |
 │   └── 16_counterexample.py    # Counterexample 1: shadow coupling |
+│   └── 17_metric_comparison.py # pinball loss + CRPS
 ├── results/
 │   └── v6_onesided_kupiec.csv  # 99-row authoritative per-cell table (shipped;
 │                               # every compliance count in the paper derives from it)
@@ -114,7 +115,7 @@ RCAC-TSFMs/
 | 13 | `13_make_figures.py` | **Figures 1–4** |
 | 15 | `15_spx_extension.py` | Cross-market validation: S&P 500 |
 | 16 | `16_counterexample.py` | Counterexample 1: shadow coupling |
-
+| 17 | `17_metric_comparison.py` | pinball loss + CRPS | 
 ## Key design decisions (why the code looks the way it does)
 
 - **Nested protocol**: windows 1–5 validate (select γ, cap), windows 6–10 test.
