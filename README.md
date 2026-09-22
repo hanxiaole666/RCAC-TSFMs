@@ -89,6 +89,8 @@ RCAC-TSFMs/
 │   ├── 12_path_sens_256.py     # 16/64/256-path confirmation
 │   ├── 13_make_figures.py      # Fig 1-4
 │   └── 14_make_table5.py       # per-asset RCAC aggregation helper
+│   └── 15_spx_extension.py     # Cross-market validation: S&P 500 |
+│   └── 16_counterexample.py    # Counterexample 1: shadow coupling |
 ├── results/
 │   └── v6_onesided_kupiec.csv  # 99-row authoritative per-cell table (shipped;
 │                               # every compliance count in the paper derives from it)
@@ -110,6 +112,8 @@ RCAC-TSFMs/
 | 11 | `11_window_sensitivity.py` | **Table B5** |
 | 12 | `12_path_sens_256.py` | Sec. 5.9 (path robustness) |
 | 13 | `13_make_figures.py` | **Figures 1–4** |
+| 15 | `15_spx_extension.py` | Cross-market validation: S&P 500 |
+| 16 | `16_counterexample.py` | Counterexample 1: shadow coupling |
 
 ## Key design decisions (why the code looks the way it does)
 

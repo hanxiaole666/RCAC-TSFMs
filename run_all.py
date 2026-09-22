@@ -58,6 +58,8 @@ STAGES = [
     (12, "12_path_sens_256.py",           ["v6_pathsens_256.csv"]),
     (13, "13_make_figures.py",            ["fig1_framework.png", "fig4_cases.png"]),
     (14, "14_make_table5.py",             []),
+    (15, "15_spx_extension.py", ["v6_spx.csv"]),
+    (16, "16_counterexample.py", []),
 ]
 
 def main():
