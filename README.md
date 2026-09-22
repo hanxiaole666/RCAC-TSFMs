@@ -33,6 +33,7 @@ GARCH-t) win width-adjusted scores; no method passes first-order conditional
 coverage; at the 80% level alone RCAC is compliance-equivalent to plain ACI.
 
 ## One-command reproduction
+Note: if you clone to a different path, keep PROJECT_ROOT in each script consistent with the clone location.
 
 ```bash
 git clone https://github.com/hanxiaole666/RCAC-TSFMs.git
