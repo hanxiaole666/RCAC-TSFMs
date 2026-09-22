@@ -17,14 +17,14 @@ Kronos 金融风险预测 升级版 v2
   C:\\Users\\apple\\anaconda3\\python.exe kronos_risk_test_v2.py
 
 【产出 (D盘)】
-  D:\\finrisk_project\\results\\v2_metrics_summary.csv   <- 总对比表
-  D:\\finrisk_project\\results\\v2_window_details.csv    <- 逐窗口明细
-  D:\\finrisk_project\\results\\v2_last_window.png       <- 最近窗口可视化
+  D:\\RCAC-TSFMs\\results\\v2_metrics_summary.csv   <- 总对比表
+  D:\\RCAC-TSFMs\\results\\v2_window_details.csv    <- 逐窗口明细
+  D:\\RCAC-TSFMs\\results\\v2_last_window.png       <- 最近窗口可视化
 """
 
 import os
 
-PROJECT_ROOT = r"D:\finrisk_project"
+PROJECT_ROOT = r"D:\RCAC-TSFMs"
 DATA_DIR     = os.path.join(PROJECT_ROOT, "data")
 RESULTS_DIR  = os.path.join(PROJECT_ROOT, "results")
 HF_CACHE_DIR = os.path.join(PROJECT_ROOT, "hf_cache")

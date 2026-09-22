@@ -26,7 +26,7 @@ Kronos 金融风险预测 v5 —— 方法最终形态 (非对称调制 + GAMMA�
 
 import os
 
-PROJECT_ROOT = r"D:\finrisk_project"
+PROJECT_ROOT = r"D:\RCAC-TSFMs"
 DATA_DIR     = os.path.join(PROJECT_ROOT, "data")
 RESULTS_DIR  = os.path.join(PROJECT_ROOT, "results")
 HF_CACHE_DIR = os.path.join(PROJECT_ROOT, "hf_cache")
@@ -56,7 +56,9 @@ TOKENIZER   = "NeoQuasar/Kronos-Tokenizer-2k"
 MAX_CONTEXT = 2048
 CHRONOS_ID  = "amazon/chronos-t5-small"
 
-SYMBOLS     = ["sh000300", "600519", "000001", "btc"]   # 指数/白酒股/银行股/加密
+SYMBOLS     = ["sh000300", "600519"]   # PAPER-LOCKED (v5 as submitted):
+    # Paper v5 results were produced with these 2 assets; "000001"/"btc" failed to
+    # fetch at submission time and were skipped. Keep locked for exact reproduction.
 LOOKBACK    = 256
 PRED_LEN    = 20
 N_WINDOWS   = 10
@@ -190,7 +192,7 @@ def chronos_forecast(pipe, close_hist, device):
 
 def main():
     print("=" * 64)
-    print("  Kronos 金融风险预测 v5  非对称调制ACI + 4资产 + Chronos基线")
+    print("  Kronos risk forecasting v5  asymmetric-modulation ACI + Chronos baseline (paper-locked 2 assets)")
     print("=" * 64)
 
     from model import Kronos, KronosTokenizer, KronosPredictor

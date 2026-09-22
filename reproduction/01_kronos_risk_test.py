@@ -12,7 +12,7 @@ Kronos 金融风险预测 跑通 + 评测脚本 (D盘版 · C盘空间保护版)
   本脚本已通过环境变量把所有缓存和产出重定向到 D盘项目目录。
 
 【推荐目录结构 (先手动建好, 或运行脚本自动创建)】
-  D:\\finrisk_project\\            <- 项目根目录 (PROJECT_ROOT)
+  D:\\RCAC-TSFMs\\            <- 项目根目录 (PROJECT_ROOT)
     ├─ kronos_risk_test.py         <- 本脚本
     ├─ model\\                    <- Kronos 官方仓库的 model 包 (见下)
     ├─ data\\                      <- K线数据CSV、Qlib数据
@@ -23,17 +23,17 @@ Kronos 金融风险预测 跑通 + 评测脚本 (D盘版 · C盘空间保护版)
 【首次使用步骤】
 1. 克隆官方仓库的 model 代码到项目目录 (在 D 盘操作, CMD 执行):
      D:
-     mkdir D:\\finrisk_project
-     cd D:\\finrisk_project
+     mkdir D:\\RCAC-TSFMs
+     cd D:\\RCAC-TSFMs
      git clone https://gh-proxy.com/https://github.com/shiyu-coder/Kronos.git
-     然后把 Kronos 仓库里的 model/ 文件夹复制到 D:\\finrisk_project\\model\\
+     然后把 Kronos 仓库里的 model/ 文件夹复制到 D:\\RCAC-TSFMs\\model\\
      (本脚本只需 model 包, 不必保留整个仓库)
 
 2. 安装依赖 (torch/pandas/matplotlib/transformers 已有则跳过):
      pip install transformers matplotlib pandas
 
 3. 运行:
-     python D:\\finrisk_project\\kronos_risk_test.py
+     python D:\\RCAC-TSFMs\\kronos_risk_test.py
 
 【国内下载模型慢?】 脚本已内置镜像, 无需手动设置。
 """
@@ -43,7 +43,7 @@ import os
 # ==================================================================
 # ★★★ D盘项目根目录: 按需修改为你的实际路径 ★★★
 # ==================================================================
-PROJECT_ROOT = r"D:\finrisk_project"
+PROJECT_ROOT = r"D:\RCAC-TSFMs"
 DATA_DIR     = os.path.join(PROJECT_ROOT, "data")
 RESULTS_DIR  = os.path.join(PROJECT_ROOT, "results")
 CKPT_DIR     = os.path.join(PROJECT_ROOT, "checkpoints")
@@ -87,7 +87,7 @@ MAX_CONTEXT = 2048 if "mini" in MODEL_NAME else 512
 LOOKBACK    = 512                              # 历史窗口长度 (mini 可到 2048)
 PRED_LEN    = 60                               # 预测未来 60 根K线
 SAMPLE_CNT  = 8                                # 采样路径数 (概率预测, 算置信区间)
-USE_SYNTHETIC_DATA = True                      # True=内置模拟数据; False=读 D:\\finrisk_project\\data\\ 下的CSV
+USE_SYNTHETIC_DATA = True                      # True=内置模拟数据; False=读 D:\\RCAC-TSFMs\\data\\ 下的CSV
 CSV_PATH    = os.path.join(DATA_DIR, "my_kline.csv")
 OUT_FIG     = os.path.join(RESULTS_DIR, "kronos_result.png")
 OUT_METRICS = os.path.join(RESULTS_DIR, "metrics.csv")

@@ -8,16 +8,16 @@ H0: 两种方法预测能力相同 (E[d_t] = 0)
 【运行】
   C:\\Users\\apple\\anaconda3\\python.exe dm_test.py
 【输入】
-  D:\\finrisk_project\\results\\v5_details.csv   (v5 已生成)
+  D:\\RCAC-TSFMs\\results\\v5_details.csv   (v5 已生成)
 【输出】
-  D:\\finrisk_project\\results\\dm_results.csv
+  D:\\RCAC-TSFMs\\results\\dm_results.csv
 """
 
 import os
 import numpy as np
 import pandas as pd
 
-RESULTS_DIR = r"D:\finrisk_project\results"
+RESULTS_DIR = r"D:\RCAC-TSFMs\results"
 DETAIL = os.path.join(RESULTS_DIR, "v5_details.csv")
 OUT    = os.path.join(RESULTS_DIR, "dm_results.csv")
 

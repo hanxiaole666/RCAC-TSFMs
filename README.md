@@ -138,6 +138,15 @@ RCAC-TSFMs/
 - **Baselines**: GARCH-t (`arch`), CQR & EnbPI (`scikit-learn`), historical
   simulation — all reimplemented from their references in `06_`.
 
+## Reproduction drift note
+
+Market data arrive via the live akshare interface; re-fetching after new trading days
+extends the series and produces small numerical drift. The **single authoritative source
+for every number in the paper** is the committed `results/v6_onesided_kupiec.csv`
+(9 cells x 11 methods, verifiable without re-running anything). A full re-run on
+2026-09-22 reproduced the headline results exactly (RCAC 6/9, raw 0/9, window
+sensitivity 84/85/81/85); per-item drift is documented in [DRIFTLOG.md](DRIFTLOG.md).
+
 ## Honest limitations (mirrors paper Sec. 6.2)
 
 - One market (China A-share), daily frequency, three assets. Cross-market claims

@@ -33,7 +33,14 @@ run_all.py — RCAC 论文一键复现主控脚本
 """
 import os, sys, subprocess, time, argparse
 
-HERE = os.path.dirname(os.path.abspath(__file__))
+HERE  = os.path.dirname(os.path.abspath(__file__))
+REPRO = os.path.join(HERE, "reproduction")
+# 产物可能在仓库 results/ 或脚本默认的 D:\\RCAC-TSFMs\\results (各脚本的 PROJECT_ROOT)
+RESULTS_CANDIDATES = [os.path.join(HERE, "results"), r"D:\RCAC-TSFMs\results"]
+
+def markers_exist(markers):
+    return any(all(os.path.exists(os.path.join(rd, m)) for m in markers)
+               for rd in RESULTS_CANDIDATES)
 
 STAGES = [
     (0,  "00_local_ai_bench.py",          []),
@@ -58,12 +65,13 @@ def main():
     ap.add_argument("--force", action="store_true", help="强制重跑全部")
     ap.add_argument("--stage", type=int, default=0, help="从该阶段开始")
     args = ap.parse_args()
-    results_dir = os.path.join(os.path.dirname(HERE), "results")
     t0 = time.time()
     for stage, script, markers in STAGES:
         if stage < args.stage: continue
-        path = os.path.join(HERE, script)
-        if not args.force and markers and all(os.path.exists(os.path.join(results_dir, m)) for m in markers):
+        path = os.path.join(REPRO, script)
+        if not os.path.exists(path):
+            print("[中止] 找不到脚本: {}".format(path)); sys.exit(1)
+        if not args.force and markers and markers_exist(markers):
             print("[跳过] 阶段{} {} (产物已存在, --force 可重跑)".format(stage, script)); continue
         print("="*70); print("[阶段 {}] {} ...".format(stage, script)); print("="*70)
         r = subprocess.run([sys.executable, path], cwd=HERE)

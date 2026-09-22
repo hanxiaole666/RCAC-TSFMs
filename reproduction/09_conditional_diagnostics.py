@@ -5,7 +5,7 @@
 """
 import pandas as pd, numpy as np, os
 
-DATA, RESULTS = r"D:\finrisk_project\data", r"D:\finrisk_project\results"
+DATA, RESULTS = r"D:\RCAC-TSFMs\data", r"D:\RCAC-TSFMs\results"
 LOOKBACK, PRED_LEN, N_VAL, N_TEST = 256, 20, 5, 5
 
 def realized_vol(close, win=20):

@@ -3,7 +3,7 @@
 【运行】C:\\Users\\apple\\anaconda3\\python.exe make_table5.py
 """
 import pandas as pd
-df = pd.read_csv(r"D:\finrisk_project\results\v5_details.csv", encoding="utf-8-sig")
+df = pd.read_csv(r"D:\RCAC-TSFMs\results\v5_details.csv", encoding="utf-8-sig")
 print("Per-asset means (RCAC = aci_g10_asym):")
 for sym, sub in df.groupby("symbol"):
     r = {"PICP": sub["PICP_aci_g10_asym"].mean(),

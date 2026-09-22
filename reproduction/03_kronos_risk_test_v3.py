@@ -22,7 +22,7 @@ Kronos 金融风险预测 v3 —— ACI 自适应校准 + 多种子统计 (论�
 
 import os
 
-PROJECT_ROOT = r"D:\finrisk_project"
+PROJECT_ROOT = r"D:\RCAC-TSFMs"
 DATA_DIR     = os.path.join(PROJECT_ROOT, "data")
 RESULTS_DIR  = os.path.join(PROJECT_ROOT, "results")
 HF_CACHE_DIR = os.path.join(PROJECT_ROOT, "hf_cache")

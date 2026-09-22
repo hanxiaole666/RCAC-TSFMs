@@ -21,7 +21,7 @@ Kronos 金融风险预测 v4 —— 波动率调制 ACI + 跨资产 + 2×2 消�
 
 import os
 
-PROJECT_ROOT = r"D:\finrisk_project"
+PROJECT_ROOT = r"D:\RCAC-TSFMs"
 DATA_DIR     = os.path.join(PROJECT_ROOT, "data")
 RESULTS_DIR  = os.path.join(PROJECT_ROOT, "results")
 HF_CACHE_DIR = os.path.join(PROJECT_ROOT, "hf_cache")

@@ -23,7 +23,7 @@ Chronos修复 (Major 6), 路径敏感性 16 vs 64 (Major 7), 经济指标 (Major
 """
 
 import os
-PROJECT_ROOT = r"D:\finrisk_project"
+PROJECT_ROOT = r"D:\RCAC-TSFMs"
 DATA_DIR, RESULTS_DIR = os.path.join(PROJECT_ROOT,"data"), os.path.join(PROJECT_ROOT,"results")
 HF_CACHE = os.path.join(PROJECT_ROOT,"hf_cache")
 os.environ["HF_HOME"] = HF_CACHE
@@ -42,7 +42,11 @@ for d in (DATA_DIR, RESULTS_DIR): os.makedirs(d, exist_ok=True)
 # ---------------- 配置 ----------------
 MODEL_NAME  = "NeoQuasar/Kronos-mini"; TOKENIZER = "NeoQuasar/Kronos-Tokenizer-2k"; MAX_CONTEXT = 2048
 CHRONOS_ID  = "amazon/chronos-t5-small"
-SYMBOLS     = ["sh000300", "sh000905", "600519", "000001"]     # 4资产 (Major 4)
+SYMBOLS     = ["sh000300", "sh000905", "600519"]   # PAPER-LOCKED (v6 as submitted):
+    # The submitted manuscript evaluates exactly these 3 assets (9 cells).
+    # A 4-asset extension (adding 000001 Ping An Bank, 12 cells) was run separately
+    # during revision preparation; it is NOT part of the submitted paper.
+    # Keep this list unchanged so that run_all.py reproduces the paper exactly.
 LOOKBACK, PRED_LEN = 256, 20
 N_VAL, N_TEST, SAMPLES = 5, 5, 16
 SEEDS       = [42, 43, 44]
@@ -256,7 +260,7 @@ def realized_vol(close, win=20):
 
 # ================= 主流程 =================
 def main():
-    print("="*66); print("  RCAC v6 — TKDE 大修实验 (嵌套评估+统计合规+强基线)"); print("="*66)
+    print("="*66); print("  RCAC v6 — main experiment (nested evaluation + statistical compliance + strong baselines)"); print("="*66)
     from model import Kronos, KronosTokenizer, KronosPredictor
     import torch
     device = "cuda:0" if torch.cuda.is_available() else "cpu"

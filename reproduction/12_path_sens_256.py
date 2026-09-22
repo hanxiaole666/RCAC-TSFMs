@@ -3,7 +3,7 @@
 【运行】C:\\Users\\apple\\anaconda3\\python.exe path_sens_256.py
 """
 import os, sys
-PROJECT_ROOT = r"D:\finrisk_project"
+PROJECT_ROOT = r"D:\RCAC-TSFMs"
 os.environ["HF_HOME"] = os.path.join(PROJECT_ROOT,"hf_cache")
 os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 os.environ["MPLCONFIGDIR"] = os.path.join(PROJECT_ROOT,"hf_cache","matplotlib")

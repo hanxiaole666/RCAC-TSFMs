@@ -1,0 +1,3 @@
+Place the Kronos model package here:
+  git clone https://github.com/shiyu-coder/Kronos.git && cp -r Kronos/model/* model/
+(Weights auto-download from Hugging Face on first run; only the model/ code package is needed.)

@@ -5,10 +5,10 @@ Fig 2: 三方法区间对比 (CSI300 测试窗8: raw/sc/RCAC 80%区间 vs 真实
 Fig 3: ACI α_t 在线轨迹 + vol_ratio (同一窗口)
 Fig 4: 案例研究双联图 (CSI300-w8 拯救链 / 茅台-w6 崩盘窗)
 【运行】C:\\Users\\apple\\anaconda3\\python.exe make_figures.py
-【产出】D:\\finrisk_project\\results\\fig1..fig4.png
+【产出】D:\\RCAC-TSFMs\\results\\fig1..fig4.png
 """
 import os, sys
-PROJECT_ROOT = r"D:\finrisk_project"
+PROJECT_ROOT = r"D:\RCAC-TSFMs"
 os.environ["HF_HOME"] = os.path.join(PROJECT_ROOT,"hf_cache")
 os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 os.environ["MPLCONFIGDIR"] = os.path.join(PROJECT_ROOT,"hf_cache","matplotlib")
@@ -99,13 +99,29 @@ ax.set_title("Fig 2 — CSI 300 test window 8 (2026-06): raw vs RCAC intervals")
 plt.tight_layout(); plt.savefig(os.path.join(RESULTS,"fig2_intervals.png"),dpi=200); plt.close()
 print("fig2 完成")
 
-# ---------- Fig 3: α_t 轨迹 ----------
+# ---------- Fig 3: α_t 轨迹 + 波动状态 ----------
+# 示意重放: 三段波动率体制 (平静->动荡->恢复), 展示 α_t 的适应性
+rng3 = np.random.default_rng(7)
+T3 = 60
+vol3 = np.concatenate([np.full(20,0.01), np.full(20,0.03), np.full(20,0.015)])
+ret3 = vol3*rng3.standard_normal(T3)
+truth3 = 4000*np.exp(np.cumsum(ret3))
+mu3 = np.roll(truth3,1); mu3[0]=truth3[0]; mu3 = mu3*np.exp(0.0005*np.arange(T3))
+a3, res3, alps3 = ALPHA, [0.008*mu3[0]], []
+for t in range(T3):
+    h = max(np.quantile(np.abs(res3), 1-a3), 1e-6)
+    miss = 0.0 if mu3[t]-h <= truth3[t] <= mu3[t]+h else 1.0
+    alps3.append(a3)
+    a3 = min(0.5, max(0.02, a3 + GAMMA*(ALPHA-miss)))
+    res3.append(truth3[t]-mu3[t]); res3=res3[-500:]
 fig, axes = plt.subplots(2,1,figsize=(11,6),sharex=True)
-axes[0].plot(fx, d["alps"], "g-", lw=2)
-axes[0].axhline(ALPHA,color="gray",ls="--",alpha=0.6); axes[0].set_ylabel("α_t")
-axes[0].set_title("Fig 3 — Online miscoverage level α_t (ACI, unmodulated feedback)")
-axes[1].plot(fx, np.full(PRED_LEN, d["vr"]), "r-", lw=2, label=f"vol_ratio = {d['vr']:.2f}")
-axes[1].axhline(1.0,color="gray",ls="--",alpha=0.6); axes[1].legend(); axes[1].set_ylabel("σ̂/σ̄")
+axes[0].plot(range(T3), alps3, "g-", lw=2)
+axes[0].axhline(ALPHA, color="gray", ls="--", alpha=0.6, label="nominal α = 0.20")
+axes[0].set_ylabel("α(t)"); axes[0].legend(); axes[0].grid(alpha=0.3)
+axes[0].set_title("Fig 3 — Online miscoverage level α(t) under unmodulated feedback (illustrative replay)")
+axes[1].plot(range(T3), vol3, "r-", lw=2, label="realized volatility σ̂(t)")
+axes[1].axvspan(20,40, color="orange", alpha=0.15, label="turbulent regime")
+axes[1].set_ylabel("σ̂(t)"); axes[1].set_xlabel("step"); axes[1].legend(); axes[1].grid(alpha=0.3)
 plt.tight_layout(); plt.savefig(os.path.join(RESULTS,"fig3_alpha.png"),dpi=200); plt.close()
 print("fig3 完成")
 
