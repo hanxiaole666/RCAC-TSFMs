@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""17_metric_comparison.py — 与标准评分规则对照: pinball loss + CRPS (审稿 Minor 回应)
+"""17_metric_comparison.py — 与标准评分规则对照: pinball loss + CRPS
 重放 CSI300 测试窗 (80%水平, seed42), 逐步存储 raw/aci/rcac 的区间端点与采样路径:
   - Pinball loss at τ ∈ {0.10, 0.90} (即80%区间的两端点分位数)
   - CRPS (从16条采样路径的经验CDF, 用 fair-CRPS 公式)

@@ -92,6 +92,7 @@ RCAC-TSFMs/
 │   └── 15_spx_extension.py     # Cross-market validation: S&P 500 |
 │   └── 16_counterexample.py    # Counterexample 1: shadow coupling |
 │   └── 17_metric_comparison.py # pinball loss + CRPS
+│   └── 18_spx_full.py          # — S&P 500 Comparison of All 11 Methods (to complete the symmetry of the methods in Section 5.11)
 ├── results/
 │   └── v6_onesided_kupiec.csv  # 99-row authoritative per-cell table (shipped;
 │                               # every compliance count in the paper derives from it)
@@ -116,6 +117,7 @@ RCAC-TSFMs/
 | 15 | `15_spx_extension.py` | Cross-market validation: S&P 500 |
 | 16 | `16_counterexample.py` | Counterexample 1: shadow coupling |
 | 17 | `17_metric_comparison.py` | pinball loss + CRPS | 
+| 18 | `18_spx_full.py` | S&P 500 Comparison of All 11 Methods (to complete the symmetry of the methods in Section 5.11) |
 ## Key design decisions (why the code looks the way it does)
 
 - **Nested protocol**: windows 1–5 validate (select γ, cap), windows 6–10 test.
