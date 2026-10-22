@@ -172,7 +172,7 @@ sensitivity 84/85/81/85); per-item drift is documented in [DRIFTLOG.md](DRIFTLOG
   title   = {Calibrating Time-Series Foundation Models for Financial Risk:
              A Risk-Compliant Study of Post-hoc Conformal Calibration},
   author  = {Anonymous},
-  journal = {submitted to IEEE TKDE},
+  journal = {submitted to Expert Systems With Applications},
   year    = {2026},
   note    = {Code: https://github.com/hanxiaole666/RCAC-TSFMs}
 }
